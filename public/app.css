@@ -1,0 +1,24 @@
+form{
+    margin-top: 100px;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color: blueviolet;
+}
+
+#click{
+    width:150px;
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: #560bad;
+    border-radius: 4px;
+}
+#typing{
+    width:150px;
+    height: 50px;
+    border-radius: 4px;
+}
