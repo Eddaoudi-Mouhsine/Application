@@ -16,6 +16,8 @@
         <input id="typing" type="text" name="name" >
         <input id="click" type="submit" name="submit">
     </form>
-</div>
+    @foreach ($data as $row)
+    <div> id is : {{ $row->id }}, name is : {{ $row->name }} </div>
+@endforeach
 </body>
 </html>
