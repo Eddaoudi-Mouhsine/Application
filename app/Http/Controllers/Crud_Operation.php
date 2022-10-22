@@ -12,18 +12,18 @@ class Crud_Operation extends Controller
 
     public function Form_Page()
     {
-        return view('welcome');
+        return view('add');
     }
     public function Insert(Request $req)
     {
         $promo = new promotion();
         $promo->name = $req->name;
         $promo->save();
-        return redirect("add");
+        return redirect("index");
     }
-    public function display()
+    public function index()
     {
         $data = promotion::all(); //this is a static method inherited by apprentice display all rows
-        return view("welcome", compact('data'));
+        return view("index", compact('data'));
     }
 }

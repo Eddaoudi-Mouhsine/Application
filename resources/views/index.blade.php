@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>result</title>
-</head>
-<body>
-    record inserted !
-    @foreach ($data as $row)
-    <div> id is : {{ $row->id }}, name is : {{ $row->name }} </div>
-@endforeach
+<link rel="stylesheet" href="/app.css">
 
-</body>
-</html>
+
+
+<div id="display">
+
+    <a  href="/add"><button id="click">Add a promotion</button></a>
+
+<table id="content">
+    <thead>
+        <tr>
+            <th>promotion id</th>
+            <th>promotion name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($data as $row)
+            
+        <tr>
+            <td>{{$row->id}}</td>
+            <td>{{$row->name}}</td>
+        </tr>
+        @endforeach
+
+    </tbody>
+</table>
+</div>

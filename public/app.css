@@ -22,3 +22,10 @@ body{
     height: 50px;
     border-radius: 4px;
 }
+
+#display{
+    margin: 150px 100px 100px 550px;
+    display: block;
+    
+
+}
