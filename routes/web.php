@@ -25,3 +25,8 @@ Route::get('/add', [Crud_Operation::class, 'form_Page'])->name('form_Page');
 Route::Post('/add', [Crud_Operation::class, 'Insert'])->name('insert');
 //when you hit the /index i want you to go to ur database fetch all of the data and display em 
 Route::get('/index', [Crud_Operation::class, 'index'])->name('index');
+//--------------------------Standard Route--------------------------------------
+//Route for retrieving data 
+Route::get('Edit/{id}', [Crud_Operation::class, 'Retriever']);
+//Route for updating data 
+Route::post('update/{id}', [Crud_Operation::class, 'update']);
