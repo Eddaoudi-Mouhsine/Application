@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\promotion;
 use Illuminate\Http\Request;
+use App\Models\Apprentice;
+use Illuminate\Support\Facades\DB;
+
 
 class Crud_Operation extends Controller
 {
@@ -31,13 +34,25 @@ class Crud_Operation extends Controller
     //fct for retrieving the specific data you want to edit by its id 
     public function Retriever($id)
     {
+        $student = DB::table('apprentices')
+            ->join('promotions', 'promotions.id', '=', 'apprentices.promotion_id')
+            ->select('apprentices.*', 'promotions.name')
+            ->where('promotions.id', $id)
+            ->get();
         $data = promotion::where('id', $id)->get();
-        return view("Edit", compact("data"));
+
+        return view("Edit", compact('student', 'data'));
     }
     //fct for inserting the modified data coming from the update post route champ
     public function update(Request $req, $id)
     {
         $promo = promotion::where('id', $id)->update(["name" => $req->name]);
+        return redirect("index");
+    }
+    //fct for deleting the specific data you want to delete by its id
+    public function Delete($id)
+    {
+        promotion::where('id', $id)->delete();
         return redirect("index");
     }
 }
