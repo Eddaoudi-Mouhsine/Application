@@ -6,7 +6,9 @@ form{
     align-items: center;
 }
 body{
-    background-color: blueviolet;
+    background-image: url("https://i.postimg.cc/FFZS68z0/luke-chesser-e-ICUFSeirc0-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #click{

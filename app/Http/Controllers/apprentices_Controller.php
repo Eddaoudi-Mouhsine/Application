@@ -25,19 +25,27 @@ class apprentices_Controller extends Controller
         $student->email = $req->email;
         $student->promotion_id = $id;
         $student->save();
-        return redirect("Edit/" . $id)->with('status', 'Student has been saved');
-        //fct that will grab the data and display it 
-
-
+        return redirect("Edit/" . $id);
     }
-    public function index()
+    // fct for retrieving the edit form alongside the data you wanna edit
+    public function StudentFormRetriever($id)
     {
-        $student = DB::table('apprentices')
-            ->join('promotions', 'promotions.id', '=', 'apprentices.promotion_id')
-            ->select('apprentices.*', 'promotions.name')
-            ->get();
-        return view("Edit", compact('student'));
+        $data = Apprentice::where('id', $id)->get();
 
-        // return dd($student);
+        return view("StudentEdit", compact('data'));
+    }
+    public function StudentUpdate(Request $req, $id)
+    { {
+            $Student = Apprentice::where('id', $id)->update(["first_name" => $req->first_name, "last_name" => $req->last_name, "email" => $req->email]);
+            $query = Apprentice::find($id)->first();
+            return redirect("Edit/" . $query->promotion_id);
+        }
+    }
+    public function StudentDelete($id)
+    {
+        $query = Apprentice::where('id', $id)->first();
+        $promo = $query->promotion_id;
+        apprentice::where('id', $id)->delete();
+        return redirect("Edit/" . $promo);
     }
 }

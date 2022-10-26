@@ -36,7 +36,7 @@ class Crud_Operation extends Controller
     {
         $student = DB::table('apprentices')
             ->join('promotions', 'promotions.id', '=', 'apprentices.promotion_id')
-            ->select('apprentices.*', 'promotions.name')
+            ->select('apprentices.*')
             ->where('promotions.id', $id)
             ->get();
         $data = promotion::where('id', $id)->get();

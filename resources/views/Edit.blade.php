@@ -1,3 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+
+
 <link rel="stylesheet" href="/app.css">
 
 @foreach ($data as $row)
@@ -7,13 +11,14 @@
     <input type="text" value="{{$row->name}}" name="name">
     <button>Update</button>
 </form>
+<a href="{{url("Studentadd")}}/{{$row->id}}"><button type="button">Add Student</button></a>
+
 @endforeach
 <div>
 </div>
 
-<a href="{{url("Studentadd")}}/{{$row->id}}"><button type="button">Add Student</button>
 
-
+<div>
 
     <table id="apprenant">
         <thead>
@@ -26,7 +31,7 @@
                 
             </tr>
         </thead>
-        <tbody>
+        <tbody id ="contentStudent">
             @foreach ($student as $entry)
                 
             <tr>
@@ -35,12 +40,19 @@
                 <td>{{$entry->email}}</td>
 
                 <td>
-                    <a href="Edit/{{$row->id}}"><button>Edit</button></a>
-                    <a href="Delete/{{$row->id}}"><button>Delete</button></a>
+                    <a href="Edit/{{$entry->id}}"><button>Edit</button></a>
+                    <a href="Delete/{{$entry->id}}"><button>Delete</button></a>
                 </td>
             </tr>
             @endforeach
     
         </tbody>
     </table>
-    
+
+
+    <input type="text" id="searchstudent"  placeholder="Search">
+
+
+    <script src="/search.js"></script>
+
+</div>

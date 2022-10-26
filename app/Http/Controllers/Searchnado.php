@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apprentice;
 use Illuminate\Http\Request;
 use App\Models\promotion;
 
@@ -22,12 +23,25 @@ class Searchnado extends Controller
                 <td>' . $promo->name . '</td>
                 <td>
         <a href="Edit/' . $promo->id . '">Edit</a>
-        <a href="Delete/' . $promo->name . '">Delete</a>
+        <a href="Delete/' . $promo->id . '">Delete</a>
         <td>
                 
                 </tr>';
             }
             return Response($display);
+        }
+    }
+    public function searchstudent($input = null)
+    {
+
+        // dd($request->search);
+        //  dd($data);
+        if ($input == null) {
+            $data = Apprentice::all();
+            return $data;
+        } else {
+            $data = Apprentice::where('first_name', 'like', '%' . $input . '%')->get();
+            return $data;
         }
     }
 }
