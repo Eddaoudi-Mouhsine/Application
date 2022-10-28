@@ -13,7 +13,7 @@
 
     <form action="add"method="Post">
         @csrf
-        <input id="typing" type="text" name="name" >
+        <input id="typing" type="text" name="name" placeholder="add promotion">
         <input id="click" type="submit" name="submit">
     </form>
     

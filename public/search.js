@@ -1,8 +1,9 @@
 let search2 = document.querySelector("#searchstudent");
 let table = document.querySelector('#contentStudent');
+let inputId=document.querySelector('#apprentice_Id')
 
 search2.addEventListener("keyup", async() => {
-    let res = await axios.get(`http://127.0.0.1:8000/searchstudent/${search2.value}`) ;
+    let res = await axios.get(`/searchstudent/${inputId.value}/${search2.value}`) ;
     let Data = res.data;
     if (Data.length > 0) {
         table.innerHTML = "";
@@ -18,8 +19,8 @@ search2.addEventListener("keyup", async() => {
 
 
             <td>
-            <a href='Edit?id=/${Data[i]["id"]}'>Edit</a>
-            <a href='Delete?id=/${Data[i]["id"]}'> Delete</a>
+            <a class="btn btn-primary" href='Edit/${Data[i]["id"]}'>Edit</a>
+            <a class="btn btn-danger" href='Delete/${Data[i]["id"]}'> Delete</a>
             </td>
         </tr>
         `;

@@ -4,11 +4,14 @@
     
 <form action="{{url('Edit/update')}}/{{$row->id}}" method="post">
     @csrf
-    <input type="text" value="{{$row->first_name}}" name="first_name">
-    <input type="text" value="{{$row->last_name}}" name="last_name">
-    <input type="text" value="{{$row->email}}" name="email">
+    <label>firstname:</label>
+    <input id="studentEditInput" type="text" value="{{$row->first_name}}" name="first_name">
+    <label>lastname:</label>
+    <input id="studentEditInput" type="text" value="{{$row->last_name}}" name="last_name">
+    <label>email:</label>
+    <input id="studentEditInput" type="text" value="{{$row->email}}" name="email">
 
 
-    <button>Update</button>
+    <button id="studendeditbutton">Update</button>
 </form>
 @endforeach

@@ -35,9 +35,12 @@ class apprentices_Controller extends Controller
         return view("StudentEdit", compact('data'));
     }
     public function StudentUpdate(Request $req, $id)
+
     { {
+
             $Student = Apprentice::where('id', $id)->update(["first_name" => $req->first_name, "last_name" => $req->last_name, "email" => $req->email]);
-            $query = Apprentice::find($id)->first();
+            $query = Apprentice::where('id', $id)->first();
+
             return redirect("Edit/" . $query->promotion_id);
         }
     }

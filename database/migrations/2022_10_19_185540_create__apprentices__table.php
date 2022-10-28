@@ -15,7 +15,7 @@ return new class extends Migration
     //migration named Apprentices(table )
     public function up()
     {
-        Schema::create('promotions', function (Blueprint $table) {
+        Schema::create('romotions', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->timestamps();

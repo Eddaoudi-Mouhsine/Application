@@ -22,8 +22,8 @@ class Searchnado extends Controller
                 <td>' . $promo->id . '</td>
                 <td>' . $promo->name . '</td>
                 <td>
-        <a href="Edit/' . $promo->id . '">Edit</a>
-        <a href="Delete/' . $promo->id . '">Delete</a>
+        <a class ="btn btn-primary" href="Edit/' . $promo->id . '">Edit</a>
+        <a class="btn btn-danger" href="Delete/' . $promo->id . '">Delete</a>
         <td>
                 
                 </tr>';
@@ -31,16 +31,22 @@ class Searchnado extends Controller
             return Response($display);
         }
     }
-    public function searchstudent($input = null)
+    public function searchstudent($id, $input = null)
     {
 
         // dd($request->search);
         //  dd($data);
         if ($input == null) {
-            $data = Apprentice::all();
+            $data = Apprentice::where('promotion_id', $id)->get();
             return $data;
         } else {
-            $data = Apprentice::where('first_name', 'like', '%' . $input . '%')->get();
+            $data = Apprentice::whereRaw("
+            promotion_id = $id AND (
+                first_name like '%$input%' OR
+                last_name like '%$input%' OR
+                email like '%$input%'
+            )
+        ")->get();
             return $data;
         }
     }

@@ -9,8 +9,7 @@
 
 </head>
 <body>
-    <div id="container">
-        <a href="index"><button>Promotion Page</button></a>
+    <div id="container2">
 
         <form method="POST" action="{{url("Studentstore")}}">
             @csrf
@@ -19,24 +18,27 @@
 
     
             
-            <input type="text"name="first_name"><br>
+            <label>firstname:</label><input id="studentedit" type="text"name="first_name">
 
-            <input type="text"name="last_name"><br>
+            <label>lastname:</label><input id="studentedit" type="text"name="last_name">
 
-            <input type="text" name="email"><br>
+            <label>email:</label><input id="studentedit" type="text" name="email">
 
             
 
 {{--so how would i basically insert the prom_id which happens to be a foreign key into the form ?--}}
 {{--remember once u click the edit on promotion grab that id and assign  it to the value of the hidden input--}}
-<button type="submit">Add Student</button>
+<button id="buttonstudentadd" type="submit">Add Student</button>
+
 <input type="hidden" value="{{$id}}"  name="id">
 
 </form>
+
             {{--we done with the add now into display those data --}}
+            <a  href="http://127.0.0.1:8000/index"><button id="promotion">Promotion Page</button></a>
 
 
+    </div>
 
-    
 </body>
 </html>

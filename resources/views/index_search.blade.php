@@ -7,3 +7,4 @@
     Email : {{ $row->email }}
 
 @endforeach
+{{--for debugging--}}

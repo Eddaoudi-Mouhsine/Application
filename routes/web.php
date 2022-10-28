@@ -46,17 +46,17 @@ Route::post("Studentstore", [apprentices_Controller::class, 'Studentstore']);
 
 
 
-//search route hehehehehe Ya boih
+//search route for promotion
 Route::get("search", [Searchnado::class, 'search']);
 
 ///okay the retriever of the editing form ------------------------
 
 Route::get("Edit/Edit/{id}", [apprentices_Controller::class, 'StudentFormRetriever']);
-
+//updating post route 
 Route::post('Edit/update/{id}', [apprentices_Controller::class, 'StudentUpdate']);
-
+//delete route
 Route::get("Edit/Delete/{id}", [apprentices_Controller::class, 'StudentDelete']);
-//search route .......................
-Route::get('searchstudent', [Searchnado::class, 'searchstudent']);
-
-Route::get('searchstudent/{input}', [Searchnado::class, 'searchstudent']);
+//search route fpr student.......................
+Route::get('searchstudent/{id}', [Searchnado::class, 'searchstudent']);
+//search route for student when you type something
+Route::get('/searchstudent/{id}/{input}',  [Searchnado::class, 'searchstudent']);

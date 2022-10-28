@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->nullable(); // even if he didnt pass an email it would allow it to pass
+            $table->string('email')->nullable(); // even if he didnt pass(You Shall not pass!!!) an email it would allow it to pass
             $table->unsignedBigInteger('promotion_id'); //serve as the key which u'll reference the id of promotions(foreign)
-            $table->foreign('promotion_id')->references('id')->on('promotions');
+            $table->foreign('promotion_id')->references('id')->on('promotions')->onDelete('cascade');
             $table->timestamps();
         });
     }
