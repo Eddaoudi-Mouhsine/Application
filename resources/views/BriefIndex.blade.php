@@ -6,7 +6,6 @@
 
 
 
-    <h1>welcome to the brief  management the birthplace of our omar live coding </h1>
 <a  href="/addBrief"><button id="click">Add a Brief</button></a>   
 
 <div id="display">
