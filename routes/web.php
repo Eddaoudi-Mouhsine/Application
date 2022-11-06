@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\apprentices_Controller;
+use App\Http\Controllers\brief_management;
 use App\Http\Controllers\Crud_Operation;
 use App\Http\Controllers\Searchnado;
+use App\Http\Controllers\Task_management;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,3 +64,39 @@ Route::get("Edit/Delete/{id}", [apprentices_Controller::class, 'StudentDelete'])
 Route::get('searchstudent/{id}', [Searchnado::class, 'searchstudent']);
 //search route for student when you type something
 Route::get('/searchstudent/{id}/{input}',  [Searchnado::class, 'searchstudent']);
+
+
+
+//tesground
+Route::get("test", function () {
+    $promotion = new App\Models\promotion;
+    $promotion->name = "solo ";
+    $promotion->save();
+    $apprentice = new App\Models\Apprentice;
+    $apprentice->first_name = "mohad";
+    $apprentice->last_name = "chellout";
+    $apprentice->email = "chelt@nakiss.com";
+    $apprentice->promotion()->associate($promotion);
+    $apprentice->save();
+    return $apprentice;
+});
+//Briefmanagement index page
+Route::get("BriefIndex", function () {
+    return view("BriefIndex");
+});
+
+Route::get("/addBrief", [brief_management::class, 'briefFormRetriever']);
+Route::Post('/addBrief', [brief_management::class, 'InsertBrief']);
+Route::get('/BriefIndex', [brief_management::class, 'indexBrief']);
+Route::get('EditBrief/{id}', [brief_management::class, 'Retriever_brief']);
+Route::post('updateBrief/{id}', [brief_management::class, 'updateBrief']);
+Route::get("DeleteBrief/{id}", [brief_management::class, 'deleteBrief']);
+//----------------------- tasks managements hehehe Ya boih-----------------
+
+Route::get("addTask/{id}", [Task_management::class, 'taskFormRetriever']);
+Route::post("Taskstore/", [Task_management::class, 'Taskstore']);
+Route::get("EditBrief/TaskEdit/{id}", [Task_management::class, 'taskeditFormRetriever']);
+Route::post("EditBrief/update/{id}", [Task_management::class, "updateTask"]);
+Route::get("EditBrief/TaskDelete/{id}", [Task_management::class, 'taskdelete']);
+Route::get("/searchbrief", [Searchnado::class, 'searchbrief']);
+Route::get("/searchbrief/{input}", [Searchnado::class, 'searchbrief']);

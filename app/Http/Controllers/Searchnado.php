@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apprentice;
+use App\Models\Brief;
 use Illuminate\Http\Request;
 use App\Models\promotion;
 
@@ -45,6 +46,24 @@ class Searchnado extends Controller
                 first_name like '%$input%' OR
                 last_name like '%$input%' OR
                 email like '%$input%'
+            )
+        ")->get();
+            return $data;
+        }
+    }
+    public function searchbrief($input = null)
+    {
+
+        // dd($request->search);
+        //  dd($data);
+        if ($input == null) {
+            $data = Brief::all();
+            return $data;
+        } else {
+            $data = Brief::whereRaw("
+             (
+                name like '%$input%'
+            
             )
         ")->get();
             return $data;

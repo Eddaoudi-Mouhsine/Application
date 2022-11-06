@@ -10,6 +10,8 @@
 
 <h1 id="title" class=" text-center">Promotion Management</h1>
 <div id="display">
+    <a  href="/BriefIndex"><button id="click">Briefs management</button></a>   
+
     <a  href="/add"><button id="click">Add a promotion</button></a>   
     <input class="form-outline"  type="text" id="search"  placeholder="Search">
     <table class="table table-sm table-dark" >

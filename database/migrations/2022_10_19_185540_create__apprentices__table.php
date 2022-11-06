@@ -15,7 +15,7 @@ return new class extends Migration
     //migration named Apprentices(table )
     public function up()
     {
-        Schema::create('romotions', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apprentices');
+        Schema::dropIfExists('promotions');
     }
 };
